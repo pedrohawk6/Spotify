@@ -1,8 +1,5 @@
-# ---------------------  Create a Playlist in my Spotify Account------------------------
+# ---------------------  Search Tracks and Artists in Spotify API ------------------------
 
-#Choose the Playlist information
-
-#Choose a song
 
 #Get user and authorization information
 import base64
@@ -15,8 +12,8 @@ import json
 
  #1. From dashboard applications in developer.spotify.com/dashboard/applications get user information
 
-client_id = '7966cbcb4b6f46f08fc732efeb3c6b03'
-client_secret = 'f272395867334f7f9ffcfd2ecf58c7fa'
+client_id = 'XXXXXXXXXXXX'
+client_secret = 'XXXXXXXXXXXXXX'
 
  # 2. Authorization in Spotify API to get access_token
 
@@ -256,36 +253,3 @@ insert_Artist_db(artist_id, artist_name)                                 # also 
 artist_top_tracks(artist_id, artist_country_iso, access_token)           #this runs one of the other functions above
 
 
-
-
-
-## Create a Playlist in user's Spotify
-
-def create_playlist(client_id, access_token):
-
-    playlist_url = 'https://api.spotify.com/v1/users/'+client_id+'/playlists'
-    print(playlist_url)
-
-    playlist_data = {
-       "collaborative": "true",
-       "description": 'test description',
-       "images": [ ],
-       "name": "New Python Playlist",
-       "public": "true",
-     "type": "playlist",
-    }
-
-    playlist_headers = {
-        "Authorization": f"Bearer {access_token}",
-        "Content-Type": "application/json"
-        }
-
-    print(playlist_data)
-    print(playlist_headers)
-
-    r3 = requests.post(playlist_url, data=playlist_data, headers=playlist_headers)   #the Authorization should be of another type to get user info 
-    print(r3.json())
-
-#create_playlist(client_id, access_token)                                 #this runs the function
-
-## Send the Selected data to Spotify
